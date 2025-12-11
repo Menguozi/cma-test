@@ -10,7 +10,7 @@ default:
 endif
 
 clean:
-	rm -rf *.ko *.o Mo* *.mod.c .test.* .tmp*  *.order *.o.rc .*.ko.cmd .*.o.cmd
+	rm -rf *.ko *.o Mo* *.mod.c .test.* .tmp*  *.order *.o.rc .*.ko.cmd .*.o.cmd .*.mod.cmd .*.o .*.cmd *.mod
 
 unix:
 	dos2unix *.* 
