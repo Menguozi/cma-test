@@ -57,5 +57,6 @@
 #include <linux/io.h>
 #include <asm/cacheflush.h>
 #include <asm/pgtable.h>
+#include <linux/ktime.h>
 
 #endif

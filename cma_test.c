@@ -1,6 +1,5 @@
 #include "test_khead.h"
 #include "cma_test.h"
-#include <linux/ktime.h>
 
 
 static unsigned long area_base = 0;
