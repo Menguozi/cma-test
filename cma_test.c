@@ -2,15 +2,16 @@
 #include "cma_test.h"
 
 
-static unsigned long area_base = 0;
+static unsigned long area_base = 0xffff800083406468;
 module_param(area_base, ulong, 0600);
 
-static unsigned long alloc_fn = 0;
+static unsigned long alloc_fn = 0xffff8000804abb68;
 module_param(alloc_fn, ulong, 0600);
-static unsigned long free_fn = 0;
+
+static unsigned long free_fn = 0xffff8000804abd90;
 module_param(free_fn, ulong, 0600);
 
-static unsigned long alloc_count = 0x20000;
+static unsigned long alloc_count = 0x100000;
 module_param(alloc_count, ulong, 0600);
 
 
