@@ -10,6 +10,9 @@ module_param(alloc_fn, ulong, 0600);
 static unsigned long free_fn = 0;
 module_param(free_fn, ulong, 0600);
 
+static unsigned long alloc_count = 0x20000;
+module_param(alloc_count, ulong, 0600);
+
 
 typedef struct page *(*cma_alloc_t)(struct cma *, size_t, unsigned int);
 typedef bool (*cma_release_t)(struct cma *, const struct page *, unsigned int);
@@ -48,7 +51,7 @@ int cma_test_init(void)
 
     printk("Measuring cma_alloc...\n");
     start = ktime_get();
-    buf = cma_alloc(dma_cma_p, 0x20000, PAGE_SHIFT);
+    buf = cma_alloc(dma_cma_p, alloc_count, PAGE_SHIFT);
     end = ktime_get();
     delta_ns = ktime_to_ns(ktime_sub(end, start));
     printk("cma_alloc succeeded. Time taken: %lld ns (%lld ms)\n",
@@ -72,7 +75,7 @@ void cma_test_exit(void)
     {
         printk("Measuring cma_release...\n");
         start = ktime_get();
-        cma_release(dma_cma_p, buf, 0x20000);
+        cma_release(dma_cma_p, buf, alloc_count);
         end = ktime_get();
         delta_ns = ktime_to_ns(ktime_sub(end, start));
         printk("cma_release succeeded. Time taken: %lld ns (%lld ms)\n",
