@@ -48,7 +48,7 @@ int cma_test_init(void)
 
     printk("Measuring cma_alloc...\n");
     start = ktime_get();
-    buf = cma_alloc(dma_cma_p, 0x20000, (1<<PAGE_SHIFT));
+    buf = cma_alloc(dma_cma_p, 0x20000, PAGE_SHIFT);
     end = ktime_get();
     delta_ns = ktime_to_ns(ktime_sub(end, start));
     printk("cma_alloc succeeded. Time taken: %lld ns (%lld ms)\n",
