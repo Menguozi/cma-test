@@ -55,8 +55,8 @@ int cma_test_init(void)
     buf = cma_alloc(dma_cma_p, alloc_count, PAGE_SHIFT);
     end = ktime_get();
     delta_ns = ktime_to_ns(ktime_sub(end, start));
-    printk("cma_alloc succeeded. Time taken: %lld ns (%lld ms)\n",
-                delta_ns, delta_ns / 1000000);
+    printk("cma_alloc succeeded. Time taken: %lld ns (%lld us)\n",
+                delta_ns, delta_ns / 1000);
 
     p = page_to_virt(buf);
     
@@ -79,8 +79,8 @@ void cma_test_exit(void)
         cma_release(dma_cma_p, buf, alloc_count);
         end = ktime_get();
         delta_ns = ktime_to_ns(ktime_sub(end, start));
-        printk("cma_release succeeded. Time taken: %lld ns (%lld ms)\n",
-                delta_ns, delta_ns / 1000000);
+        printk("cma_release succeeded. Time taken: %lld ns (%lld us)\n",
+                delta_ns, delta_ns / 1000);
     }
 
     return;    
